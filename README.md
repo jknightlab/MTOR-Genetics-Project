@@ -1,6 +1,6 @@
 # MTOR-Genetics-Project
 
-## Context-specific regulatory genetic variation in MTOR dampens Neutrophil-T cell crosstalk in sepsis, modulating disease
+## P. Zhang et al., Context-specific regulatory genetic variation in MTOR dampens Neutrophil-T cell crosstalk in sepsis, modulating disease. (2025)
 
 ![Screenshot](output/model.png)
 
