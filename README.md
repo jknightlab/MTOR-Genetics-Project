@@ -35,8 +35,8 @@ Sepsis is a heterogeneous clinical syndrome with a high mortality rate and perso
 - [5 RNA-seq analysis](#5-rna-seq-analysis)
   - 5.1 RNA-seq analysis pipeline
   - 5.2 PCA & Differential expression analysis
-  - 5.3 UMAP projection of sepsis whole blood scRNA-seq data 
-  - 5.4 Cell type deconvolution
+  - 5.3 Cell type deconvolution
+  - 5.4 UMAP projection of sepsis whole blood scRNA-seq data 
 - [6 ATAC-seq analysis](#6-atac-seq-analysis)
   - 6.1 ATAC-seq analysis pipeline
   - 6.2 PCA & Differential expression analysis
@@ -84,14 +84,18 @@ sbatch --wrap="bash 0.get.key.name.sh && bash 1.trimming.sh && bash 2.hisat2.map
 ```
 parallel ::: "Rscript ./DEseq2_T.cells_fig.4.R" "Rscript ./DEseq2_T.cells_fig.5.R" "Rscript ./DEseq2-CD4-RNAsesq-Rapamycin-PRJNA532911.R"
 ```
-5.3 UMAP projection of sepsis whole blood scRNA-seq data 
 
-5.4 Cell type deconvolution
-Cell-type deconvolution was performed with [CIBERSORTx](https://cibersortx.stanford.edu/) using a reference panel derived from a [single cell RNA-seq cohort](https://pubmed.ncbi.nlm.nih.gov/37095375/) of 26 sepsis patients including 9 convalescent samples, 6 healthy donors and 7 post-cardiac bypass surgery patients. A signature matrix was built by the Create Signature Matrix analysis module with parameters min. expression = 0.25, replicates = 100 and sampling = 0.5. The CIBERSORTx absolute scores of each cell type in bulk samples were then obtained using the mixture file (Bulk RNAseq count matrix normalised by DESeq2), the signature matrix derived from single cell RNA-seq, the single cell reference matrix for S-mode batch correction and with 100 permutations via the Impute Cell Fractions analysis module.
+5.3 Cell type deconvolution
+Cell-type deconvolution was performed with [CIBERSORTx](https://cibersortx.stanford.edu/) using a reference panel derived from a [sepsis whole blood scRNA-seq dataset](https://pubmed.ncbi.nlm.nih.gov/37095375/). A signature matrix was built by the Create Signature Matrix analysis module with parameters min. expression = 0.25, replicates = 100 and sampling = 0.5. The CIBERSORTx absolute scores of each cell type in bulk samples were then obtained using the mixture file (Bulk RNAseq count matrix normalised by DESeq2), the signature matrix derived from single cell RNA-seq, the single cell reference matrix for S-mode batch correction and with 100 permutations via the Impute Cell Fractions analysis module.
 
 ```
 # association between cell absolute scores and sepsis SRS endotypes
 Rscript ./CIBERSORTx_linear.regression_fig.S1.R
+```
+
+5.4 UMAP projection of sepsis whole blood scRNA-seq data 
+```
+Rscript ./########
 ```
 ## 6 ATAC-seq analysis
 This section describes the ATAC-seq analysis pipeline.
