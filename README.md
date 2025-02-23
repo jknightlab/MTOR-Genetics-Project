@@ -1,7 +1,7 @@
 # MTOR-Genetics-Project
 #### _P. Zhang et al., Context-specific regulatory genetic variation in MTOR dampens Neutrophil-T cell crosstalk in sepsis, modulating disease. (2025)_
 
-![Screenshot](output/model.png)
+<img src="output/model.png" alt="Screenshot" width="80%" />
 ### 
 Sepsis is a heterogeneous clinical syndrome with a high mortality rate and personalised stratification strategies are proposed as essential to successful targeted therapeutics. Here, we characterise genetic variation that modulates MTOR, a critical regulator of metabolism and immune responses in sepsis. The effects are highly context specific, involving a regulatory element that affects MTOR expression in activated T cells with opposite direction of effect in neutrophils. The lead variant significantly interacts with the known sepsis prognostic marker neutrophil-to-lymphocyte ratio, showing activity specific to sepsis endotype and a pleiotropic effect on type 2 diabetes (T2D) risk. Using ex vivo models, we demonstrate that activated T cells promote immunosuppressive sepsis neutrophils through released cytokines, a process dampened by hypoxia and the mTOR inhibitor rapamycin. The G-allele of the variant, associated with decreased risk of T2D, is associated with reduced mTOR signaling in T cells and improved survival in sepsis patients due to pneumonia. We define a novel epigenetic mechanism that fine-tunes MTOR transcription and T cell activity via the variant-containing regulatory element, which exhibits an allelic effect upon vitamin C treatment. Our findings reveal how common genetic variation can interact with disease state/endotype to modulate immune cell-cell communication, providing a patient stratification strategy to inform more effective treatment of sepsis and suggesting putative mechanisms underlying the variable efficacy of vitamin C therapy in sepsis.
 
@@ -58,9 +58,18 @@ We performed the SMR analysis using eQTLs as instrumental variables to identify 
 This section describes the RNA-seq analysis pipeline.
 
 ## 6 ATAC-seq analysis
+This section describes the ATAC-seq analysis pipeline.
 
 ## 7 ChIP-seq analysis
 This section describes the analysis for hMeDIP-seq.
 
 ## 8 Single guide RNA (sgRNA) design
-We designed and selected top ranked single guide RNA (sgRNA) based on the scoring metrics using FlashFry 
+We designed and selected top ranked single guide RNA (sgRNA) based on the scoring metrics using [FlashFry](https://bmcbiol.biomedcentral.com/articles/10.1186/s12915-018-0545-0).
+```
+bash ./scripts/Create.Database.sh
+bash ./scripts/Find.Score.gRNAs_2.sh
+```
+
+## Contact
+Ping Zhang (ping.zhang@well.ox.ac.uk)
+
