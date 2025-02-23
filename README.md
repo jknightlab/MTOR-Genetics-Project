@@ -50,7 +50,7 @@ Sepsis is a heterogeneous clinical syndrome with a high mortality rate and perso
 #### 1.3 Colocalisation analysis
 
 ## 2 Survival analysis
-To assess the association between genetic variants and 28-day mortality, Cox proportional-hazards model and logistic regression adjusting for age, sex, and the first seven principal components were used.
+To assess the association between genetic variants and 28-day mortality, we use Cox proportional-hazards model and logistic regression adjusting for age, sex, and the first seven genotype principal components.
 ```
 Rscript ./cox.PH_logistic.regression.R
 ```
