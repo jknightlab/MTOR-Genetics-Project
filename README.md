@@ -50,6 +50,10 @@ Sepsis is a heterogeneous clinical syndrome with a high mortality rate and perso
 #### 1.3 Colocalisation analysis
 
 ## 2 Survival analysis
+To assess the association between genetic variants and 28-day mortality, Cox proportional-hazards model and logistic regression adjusting for age, sex, and the first seven principal components were used.
+```
+Rscript ./cox.PH_logistic.regression.R
+```
 
 ## 3 Summary data-based Mendelian randomisation
 We performed the SMR analysis using eQTLs as instrumental variables to identify genes whose expression is associated with T2D risk due to pleiotropy and/or causality. Genes were included in the analysis if they had at least one cis-eQTL (P < 5e⁻⁸) within a 2 Mbp window around GWAS loci, following the default settings of the [SMR tool (v1.3.1)](https://yanglab.westlake.edu.cn/software/smr/#SMR&HEIDIanalysis). The HEIDI (heterogeneity in dependent instruments) test was applied to differentiate functional associations from linkage effects. LD correlation between SNPs was estimated using 1000 Genomes Project data for Europeans.
