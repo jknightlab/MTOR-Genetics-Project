@@ -1,0 +1,13 @@
+Sample.ID,Cell.type,Time.point,Biological.replicate,Index.primer.ID,Index.seq,Comments
+CD4_1_Day_0,CD4,Day 0,1,1,ATCACG,NA
+CD4_2_Day_0,CD4,Day 0,2,2,CGATGT,NA
+CD4_3_Day_0,CD4,Day 0,3,3,TTAGGC,NA
+CD4_1_Day_4,CD4,Day 4,1,4,TGACCA,NA
+CD4_2_Day_4,CD4,Day 4,2,5,ACAGTG,NA
+CD4_3_Day_4,CD4,Day 4,3,6,GCCAAT,NA
+CD8_1_Day_0,CD8,Day 0,1,15,ATGTCA,NA
+CD8_2_Day_0,CD8,Day 0,2,16,CCGTCC,NA
+CD8_3_Day_0,CD8,Day 0,3,17,GTAGAG,NA
+CD8_1_Day_4,CD8,Day 4,1,18,GTCCGC,NA
+CD8_2_Day_4,CD8,Day 4,2,19,GTGAAA,NA
+CD8_3_Day_4,CD8,Day 4,3,20,GTGGCC,NA
