@@ -46,7 +46,7 @@ Sepsis is a heterogeneous clinical syndrome with a high mortality rate and perso
 
 ## 1 Identification of context specific eQTLs
 1.1 Interaction analysis
-```
+```bash
 # Interaction between MTOR.SNP*SRS or NLR
 Rscript ./1.LMM-model-interaction.R <SRS_data_file> <cell_counts_file>
 # Inverted eQTLs between Neutrophils and T cells
@@ -54,11 +54,13 @@ Rscript ./2.inverted.SRS-interacting.eQTLs.R
 ```
 
 1.2 Pairwise linkage disequilibrium (R²) for the MTOR locus
+```
+bash ./3.r2.ld.map.sh
+```
 
-#####
 1.3 Colocalisation analysis
 
-#####
+
 
 ## 2 Survival analysis
 To assess the association between genetic variants and 28-day mortality, we use Cox proportional-hazards model and logistic regression adjusting for age, sex, and the first seven genotype principal components.
