@@ -45,9 +45,20 @@ Sepsis is a heterogeneous clinical syndrome with a high mortality rate and perso
 - [8 Single guide RNA (sgRNA) design](#8-single-guide-rna-sgrna-design)
 
 ## 1 Identification of context specific eQTLs
-#### 1.1 Interaction analysis
-#### 1.2 Pairwise linkage disequilibrium (R²) for the MTOR locus
-#### 1.3 Colocalisation analysis
+1.1 Interaction analysis
+```
+# Interaction between MTOR.SNP*SRS or NLR
+Rscript ./LMM-model-interaction.R <SRS_data_file> <cell_counts_file>
+# Inverted eQTLs between Neutrophils and T cells
+Rscript ./inverted.SRS-interacting.eQTLs.R
+```
+
+1.2 Pairwise linkage disequilibrium (R²) for the MTOR locus
+
+#####
+1.3 Colocalisation analysis
+
+#####
 
 ## 2 Survival analysis
 To assess the association between genetic variants and 28-day mortality, we use Cox proportional-hazards model and logistic regression adjusting for age, sex, and the first seven genotype principal components.
