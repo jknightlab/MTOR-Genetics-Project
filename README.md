@@ -4,7 +4,7 @@
 <div align="center">
   <img src="output/model.png" alt="Screenshot" width="80%" />
 </div>
-### 
+
 Sepsis is a heterogeneous clinical syndrome with a high mortality rate and personalised stratification strategies are proposed as essential to successful targeted therapeutics. Here, we characterise genetic variation that modulates MTOR, a critical regulator of metabolism and immune responses in sepsis. The effects are highly context specific, involving a regulatory element that affects MTOR expression in activated T cells with opposite direction of effect in neutrophils. The lead variant significantly interacts with the known sepsis prognostic marker neutrophil-to-lymphocyte ratio, showing activity specific to sepsis endotype and a pleiotropic effect on type 2 diabetes (T2D) risk. Using ex vivo models, we demonstrate that activated T cells promote immunosuppressive sepsis neutrophils through released cytokines, a process dampened by hypoxia and the mTOR inhibitor rapamycin. The G-allele of the variant, associated with decreased risk of T2D, is associated with reduced mTOR signaling in T cells and improved survival in sepsis patients due to pneumonia. We define a novel epigenetic mechanism that fine-tunes MTOR transcription and T cell activity via the variant-containing regulatory element, which exhibits an allelic effect upon vitamin C treatment. Our findings reveal how common genetic variation can interact with disease state/endotype to modulate immune cell-cell communication, providing a patient stratification strategy to inform more effective treatment of sepsis and suggesting putative mechanisms underlying the variable efficacy of vitamin C therapy in sepsis.
 
 ## Source of Data:
