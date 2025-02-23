@@ -82,13 +82,17 @@ sbatch --wrap="bash 0.get.key.name.sh && bash 1.trimming.sh && bash 2.hisat2.map
 
 5.2 PCA & Differential expression analysis - related to Fig.4 & 5
 ```
-Rscript ./xxxxxx
-Rscript ./xxxxxx
+parallel ::: "Rscript ./DEseq2_T.cells_fig.4.R" "Rscript ./DEseq2_T.cells_fig.5.R" "Rscript ./DEseq2-CD4-RNAsesq-Rapamycin-PRJNA532911.R"
 ```
 5.3 UMAP projection of sepsis whole blood scRNA-seq data 
 
 5.4 Cell type deconvolution
+Cell-type deconvolution was performed with [CIBERSORTx](https://cibersortx.stanford.edu/) using a reference panel derived from a [single cell RNA-seq cohort](https://pubmed.ncbi.nlm.nih.gov/37095375/) of 26 sepsis patients including 9 convalescent samples, 6 healthy donors and 7 post-cardiac bypass surgery patients. A signature matrix was built by the Create Signature Matrix analysis module with parameters min. expression = 0.25, replicates = 100 and sampling = 0.5. The CIBERSORTx absolute scores of each cell type in bulk samples were then obtained using the mixture file (Bulk RNAseq count matrix normalised by DESeq2), the signature matrix derived from single cell RNA-seq, the single cell reference matrix for S-mode batch correction and with 100 permutations via the Impute Cell Fractions analysis module.
 
+```
+# association between cell absolute scores and sepsis SRS endotypes
+Rscript ./CIBERSORTx_linear.regression_fig.S1.R
+```
 ## 6 ATAC-seq analysis
 This section describes the ATAC-seq analysis pipeline.
 Sequencing reads for ATAC-seq were aligned to the human genome (hg38) using Bowtie2 (v2.2.5). Data were filtered for quality control using Picard (v2.0.1) and Samtools (v1.9) before peak calling with MACS2 (v2.1.0). Differential peak analysis was performed using DESeq2, considering peaks present in at least 30% of samples. Potential batch effects and/or technical variation were assessed through principal component analysis and incorporated as covariates in the DESeq2 design formula. 
