@@ -38,10 +38,10 @@ Sepsis is a heterogeneous clinical syndrome with a high mortality rate and perso
   - 4.3 UMAP projection of sepsis whole blood scRNA-seq data 
   - 4.3 Cell type deconvolution
 - [6 ATAC-seq analysis](#6-atac-seq-analysis)
-  - 5.1 ATAC-seq analysis pipeline
-  - 5.2 PCA & Differential expression analysis
+  - 6.1 ATAC-seq analysis pipeline
+  - 6.2 PCA & Differential expression analysis
 - [7 ChIP-seq analysis](#7-chip-seq-analysis)
-  - 6.1 ChIP-seq analysis pipeline
+  - 7.1 ChIP-seq analysis pipeline
 - [8 Single guide RNA (sgRNA) design](#8-single-guide-rna-sgrna-design)
 
 ## 1 Identification of context specific eQTLs
@@ -79,6 +79,19 @@ This section describes the RNA-seq analysis pipeline.
 
 ## 6 ATAC-seq analysis
 This section describes the ATAC-seq analysis pipeline.
+Sequencing reads for ATAC-seq were aligned to the human genome (hg38) using Bowtie2 (v2.2.5). Data were filtered for quality control using Picard (v2.0.1) and Samtools (v1.9) before peak calling with MACS2 (v2.1.0). Differential peak analysis was performed using DESeq2, considering peaks present in at least 30% of samples. Potential batch effects and/or technical variation were assessed through principal component analysis and incorporated as covariates in the DESeq2 design formula. 
+
+6.1 run alignment and peak calling - Detailed scripts are [publicly available](https://pubmed.ncbi.nlm.nih.gov/37388915/).
+```bash
+/ATAC_seq_analysis_slurm_hg38/ATAC_MAIN \
+--fastq ./raw.ATACseq/ \
+--out ./Results_ATAC \
+--min 3 --noidr 8
+```
+6.2 run differential chromatin accessibility using DESeq2 
+```
+Rscript ./02.ATACseq_DESeq2.R
+```
 
 ## 7 ChIP-seq analysis
 This section describes the analysis for hMeDIP-seq.
