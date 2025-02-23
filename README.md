@@ -52,7 +52,24 @@ Sepsis is a heterogeneous clinical syndrome with a high mortality rate and perso
 ## 2 Survival analysis
 
 ## 3 Summary data-based Mendelian randomisation
-We performed the SMR analysis using eQTLs as instrumental variables to identify genes whose expression is associated with T2D risk due to pleiotropy and/or causality. Genes were included in the analysis if they had at least one cis-eQTL (P < 5e⁻⁸) within a 2 Mbp window around GWAS loci, following the default settings of the SMR tool (v1.3.1). The HEIDI (heterogeneity in dependent instruments) test was applied to differentiate functional associations from linkage effects. LD correlation between SNPs was estimated using 1000 Genomes Project data for Europeans.
+We performed the SMR analysis using eQTLs as instrumental variables to identify genes whose expression is associated with T2D risk due to pleiotropy and/or causality. Genes were included in the analysis if they had at least one cis-eQTL (P < 5e⁻⁸) within a 2 Mbp window around GWAS loci, following the default settings of the [SMR tool (v1.3.1)](https://yanglab.westlake.edu.cn/software/smr/#SMR&HEIDIanalysis). The HEIDI (heterogeneity in dependent instruments) test was applied to differentiate functional associations from linkage effects. LD correlation between SNPs was estimated using 1000 Genomes Project data for Europeans.
+```
+# 1 Input file preparation
+#!/bin/bash
+studies=("BLUEPRINT" "Schmiedel_2018" "Schmiedel_2018" "FUSION" "TwinsUK")
+sample_groups=("neutrophil" "CD4_T-cell_anti-CD3-CD28" "CD8_T-cell_anti-CD3-CD28" "adipose_naive" "fat")
+# Loop through each study and sample group combination
+for i in "${!studies[@]}"; do
+    study=${studies[$i]}
+    sample_group=${sample_groups[$i]}
+    echo "Running analysis for $study and $sample_group..."
+    # Run the R script with the current study and sample group
+    Rscript ./1.smr.file.prep.R "$study" "$sample_group"
+done
+
+# 2 SMR/HEIDI analysis
+bash ./2.smr.run.sh
+```
 
 ## 4 Pairwise fixation index (Fst)
 
