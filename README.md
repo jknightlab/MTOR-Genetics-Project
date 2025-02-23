@@ -77,7 +77,7 @@ bash ./2.smr.run.sh
 ## 5 RNA-seq analysis
 5.1 This section describes the RNA-seq analysis pipeline. Raw RNA-seq reads were trimmed using Trim Galore (v0.6.2) and aligned to human genome (hg38) using the HISAT2 (v2.1.0). Transcript quantification was performed using featureCounts (v1.6.2) with GENCODE v31 annotations. The bigwig files normalised by RPKM (Reads Per Kilobase per Million mapped reads) were generated using the bamCoverage function of deepTools (version 3.3.1). Differential gene expression analysis was conducted using DESeq2 on raw read counts. 
 ```
-sbatch --wrap="bash 0.get.key.name.sh && bash 1.trimming.sh && bash 2.hisat2.mapping.sh && bash 3.featureCounts.sh && 4.RNASeQC.sh"
+sbatch --wrap="bash 0.get.key.name.sh && bash 1.trimming.sh && bash 2.hisat2.mapping.sh && bash 3.featureCounts.sh && 4.RNASeQC.sh && 5.make.bigwigs.sh"
 ```
 
 5.2 PCA & Differential expression analysis - related to Fig.4 & 5
