@@ -48,9 +48,9 @@ Sepsis is a heterogeneous clinical syndrome with a high mortality rate and perso
 1.1 Interaction analysis
 ```
 # Interaction between MTOR.SNP*SRS or NLR
-Rscript ./LMM-model-interaction.R <SRS_data_file> <cell_counts_file>
+Rscript ./1.LMM-model-interaction.R <SRS_data_file> <cell_counts_file>
 # Inverted eQTLs between Neutrophils and T cells
-Rscript ./inverted.SRS-interacting.eQTLs.R
+Rscript ./2.inverted.SRS-interacting.eQTLs.R
 ```
 
 1.2 Pairwise linkage disequilibrium (R²) for the MTOR locus
