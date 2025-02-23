@@ -114,8 +114,8 @@ sbatch --wrap="bash 0.get.key.name.sh && bash 1.trimming.sh && bash 2.BWA.mappin
 ## 8 Single guide RNA (sgRNA) design
 We designed and selected top ranked single guide RNA (sgRNA) based on the scoring metrics using [FlashFry](https://bmcbiol.biomedcentral.com/articles/10.1186/s12915-018-0545-0).
 ```
-bash ./scripts/Create.Database.sh
-bash ./scripts/Find.Score.gRNAs_2.sh
+bash ./Create.Database.sh
+bash ./Find.Score.gRNAs.sh
 ```
 
 ## Contact
