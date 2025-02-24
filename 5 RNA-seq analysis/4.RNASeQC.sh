@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -A jknight.prj 
+#SBATCH -A {}.prj 
 #SBATCH -p short --cpus-per-task 1
 #SBATCH -J rnaseqc            
 #SBATCH -o rnaseqc.o           
