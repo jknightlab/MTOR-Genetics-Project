@@ -5,7 +5,7 @@ library(DESeq2)
 library(ggplot2)
 library(data.table)
 # Read the data from the standard input.
-countData.raw = read.table("~/1.GitHub_Code availability/output/RNAseq_featureCounts_Tcell.day0.day4.txt.gz", header=TRUE, sep="\t", row.names=1 )
+countData.raw = read.table("./output/RNAseq_featureCounts_Tcell.day0.day4.txt.gz", header=TRUE, sep="\t", row.names=1 )
 #
 colnames(countData.raw)
 # clean the columns
@@ -23,7 +23,7 @@ countData.raw = colClean2(countData.raw)
 colnames(countData.raw)
 countData = countData.raw[,-c(1:6)]
 ##
-meta.data <- fread("~/1.GitHub_Code availability//output/RNAseqseq.meta.csv", stringsAsFactors = F) 
+meta.data <- fread("./output/RNAseqseq.meta.csv", stringsAsFactors = F) 
 
 ########
 countData = countData[,which(names(countData) %in% meta.data$Sample.ID)]
