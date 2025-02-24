@@ -89,6 +89,10 @@ bash ./2.smr.run.sh
 ```
 
 ## 4 Pairwise fixation index (Fst)
+Pairwise Fst for the MTOR lead eQTLs (R2>0.95) across 5 superpopulations and 26 subpopulations based on the 1000 Genomes Project data. Fst was calculated using Weir and Cockerham method as implemented in the R package hierfstat.
+```
+bash ./Fst.sh
+```
 
 ## 5 RNA-seq analysis
 #### 5.1 This section describes the RNA-seq analysis pipeline. 
