@@ -29,7 +29,7 @@ sample_group <- args[2]
 # GWAS Summary Statistics for T2D Cohort 2024
 T2D_GWAS_FILE <- "~/T2D.GWAS/EUR_Metal_LDSC-CORR_Neff.v2.txt.gz"
 # 1000 Genomes European Reference Panel (Allele Frequencies)
-# /apps/well/plink/2.00a-20170724/plink2 -bfile /well/jknight/users/kwz374/GWAS.snps/1kg_EUR/1000genomes_EUR_chr1  --freq cols=+pos
+# /apps/well/plink/2.00a-20170724/plink2 -bfile ~/1kg_EUR/1000genomes_EUR_chr1  --freq cols=+pos
 KG_EUR_AFREQ_FILE <- "~/EUR_chr1_plink2.afreq.gz"
 # Tabix file paths from eQTL Catalogue
 TABIX_PATHS_FILE <- "https://raw.githubusercontent.com/eQTL-Catalogue/eQTL-Catalogue-resources/master/tabix/tabix_ftp_paths.tsv"
