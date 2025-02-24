@@ -5,7 +5,7 @@ library(DESeq2)
 library(ggplot2)
 library(data.table)
 # Read the data from the standard input.
-countData.raw = read.table("~/1.GitHub_Code availability/output/RNAseq_featureCounts_CD4_Rapa_PRJNA532911.txt.gz", header=TRUE, sep="\t", row.names=1 )
+countData.raw = read.table("./output/RNAseq_featureCounts_CD4_Rapa_PRJNA532911.txt.gz", header=TRUE, sep="\t", row.names=1 )
 #
 colnames(countData.raw)
 # clean the columns
@@ -78,7 +78,7 @@ res$gene_name = rownames(res)
 res.sig= res[res$padj <0.05 & abs(res$log2FoldChange) > 1 & !is.na(res$padj),]
 
 ### 
-sig.cytokines.CD4 <- fread("~/MTOR.project//results/cytokines.CD4.sig.day4.vs.day0.csv")
+sig.cytokines.CD4 <- fread("~/MTOR.project/results/cytokines.CD4.sig.day4.vs.day0.csv")
 sig.cytokines.CD8 <- fread("~/MTOR.project/results/cytokines.CD8.sig.day4.vs.day0.csv")
 sig.cytokines = merge(sig.cytokines.CD4, sig.cytokines.CD8, by="gene_name")
 
