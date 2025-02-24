@@ -68,7 +68,7 @@ Rscript ./cox.PH_logistic.regression.R
 ```
 
 ## 3 Summary data-based Mendelian randomisation
-We performed the SMR analysis using eQTLs as instrumental variables to identify genes whose expression is associated with T2D risk due to pleiotropy and/or causality. Genes were included in the analysis if they had at least one cis-eQTL (P < 5e⁻⁸) within a 2 Mbp window around GWAS loci, following the default settings of the [SMR tool (v1.3.1)](https://yanglab.westlake.edu.cn/software/smr/#SMR&HEIDIanalysis). The HEIDI (heterogeneity in dependent instruments) test was applied to differentiate functional associations from linkage effects. LD correlation between SNPs was estimated using 1000 Genomes Project data for Europeans.
+SMR analysis using eQTLs as instrumental variables to identify genes whose expression is associated with T2D risk due to pleiotropy and/or causality. Genes were included in the analysis if they had at least one cis-eQTL (P < 5e⁻⁸) within a 2 Mbp window around GWAS loci, following the default settings of the [SMR tool (v1.3.1)](https://yanglab.westlake.edu.cn/software/smr/#SMR&HEIDIanalysis). The HEIDI (heterogeneity in dependent instruments) test was applied to differentiate functional associations from linkage effects. LD correlation between SNPs was estimated using 1000 Genomes Project data for Europeans.
 ```bash
 # 1 Input file preparation
 bash ./1.run.1.sh
