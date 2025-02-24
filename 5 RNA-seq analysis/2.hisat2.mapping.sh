@@ -1,8 +1,8 @@
 #!/bin/bash
-#SBATCH -A jknight.prj 
-#SBATCH -p short --cpus-per-task 4      # Partition (queue) - asking for short queue & 4-cpu job
-#SBATCH -J hisat2             # Job name
-#SBATCH -o hisat2-%a.o          # Standard error "slurm-%A_%a.out", "%A" is replaced by the job ID and "%a" with the array index.
+#SBATCH -A {}.prj 
+#SBATCH -p short --cpus-per-task 4      
+#SBATCH -J hisat2             
+#SBATCH -o hisat2-%a.o
 #SBATCH --array 1-12:1 
 
 echo "------------------------------------------------"
@@ -33,7 +33,7 @@ ml use -a /apps/eb/2020b/skylake/modules/all
 module load SAMtools/1.9-foss-2018b
 
 # The HISAT2 index name.
-IDX=/well/jknight/users/kwz374/refs/grch38/genome
+IDX=/refs/grch38/genome
 
 echo "Running Hisat2: $FASTQ1 $FASTQ2"
 
