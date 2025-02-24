@@ -13,7 +13,6 @@ gffdb="./gencode.v41lift37.basic.annotation.gff3"
 feature_ids="${INPUT_DIR}/feature_ids.txt"
 gwas_file="./T2D_cohort2024_subset_gwas_sum_ma"
 gene_list="./glist_hg19_refseq.txt"
-#bfile="/well/jknight/users/kwz374/GWAS.snps/1kg_EUR/1000genomes_EUR_chr1"
 bfile="./1000genomes_EUR_chr1_dedup"
 
 ### 1. make ESD files
@@ -52,7 +51,7 @@ echo -e "*** Generate BESD database from eQTL summary ..."
 ./smr --make-besd --eqtl-flist ${INPUT_DIR}/esd_file_list.txt --out ${OUTPUT_DIR}${BASE_NAME}_eqtl_summary
 
 #module load PLINK/2.00a2.3_x86_64
-#plink2 --bfile /well/jknight/users/kwz374/GWAS.snps/1kg_EUR/1000genomes_EUR_chr1 --rm-dup force-first --make-bed --out 1000genomes_EUR_chr1_dedup
+#plink2 --bfile ~/1kg_EUR/1000genomes_EUR_chr1 --rm-dup force-first --make-bed --out 1000genomes_EUR_chr1_dedup
 
 ### 3. run SMR and HEIDI test
 ./smr --bfile $bfile \
