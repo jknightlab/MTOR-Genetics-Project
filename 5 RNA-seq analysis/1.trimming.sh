@@ -1,8 +1,8 @@
 #!/bin/bash
-#SBATCH -A jknight.prj 
-#SBATCH -p short --cpus-per-task 4      # Partition (queue) - asking for short queue & 4-cpu job
-#SBATCH -J trmming             # Job name
-#SBATCH -o triming-%a.o          # Standard error "slurm-%A_%a.out", "%A" is replaced by the job ID and "%a" with the array index.
+#SBATCH -A {}.prj 
+#SBATCH -p short --cpus-per-task 4      
+#SBATCH -J trmming            
+#SBATCH -o triming-%a.o         
 #SBATCH --array 1-12:1 
 
 echo "------------------------------------------------"
@@ -18,7 +18,7 @@ mkdir Mapping
 fi
 
 # Fastq files 
-FASTQDIR="/well/jknight/users/kwz374/MTOR-genetic-project/GEO.submission.Tcell/raw.RNAseq"
+FASTQDIR="~/raw.RNAseq"
 echo "Fastq directory: "$FASTQDIR
 
 FASTQ=$(cat sample.key_12.txt | tail -n+${SLURM_ARRAY_TASK_ID} | head -1 | cut -f1 )
