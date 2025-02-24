@@ -30,13 +30,13 @@ echo $FASTQ1  $FASTQ2
 REF=/well/jknight/users/kwz374/refs/REF.UCSC/hg38.fa
 ## /apps/well/bwa/0.7.12-gcc4.9.1/bwa index $REF
 
-#echo "##### ***Running bwa-MEM on SE SAMPLE: $FASTQ1"
-#/apps/well/bwa/0.7.12-gcc4.9.1/bwa mem -t 8 \
-#-M $REF $FASTQ1 | samtools sort > Mapping/mapped.bwa-MEM/${FASTQ}.bam 
+echo "##### ***Running bwa-MEM on SE SAMPLE: $FASTQ1"
+/apps/well/bwa/0.7.12-gcc4.9.1/bwa mem -t 8 \
+-M $REF $FASTQ1 | samtools sort > Mapping/mapped.bwa-MEM/${FASTQ}.bam 
 
-echo "##### ***Running bwa-MEM on PE SAMPLE: $FASTQ1 $FASTQ2"
-/apps/well/bwa/0.7.12-gcc4.9.1/bwa mem -t 12 \
--M $REF $FASTQ1 $FASTQ2 | samtools sort -@ 12 > Mapping/mapped.bwa-MEM/${FASTQ}.bam 
+#echo "##### ***Running bwa-MEM on PE SAMPLE: $FASTQ1 $FASTQ2"
+#/apps/well/bwa/0.7.12-gcc4.9.1/bwa mem -t 12 \
+#-M $REF $FASTQ1 $FASTQ2 | samtools sort -@ 12 > Mapping/mapped.bwa-MEM/${FASTQ}.bam 
 
 samtools index -@ 12 Mapping/mapped.bwa-MEM/${FASTQ}.bam
 
