@@ -24,7 +24,6 @@ Sepsis is a heterogeneous clinical syndrome with a high mortality rate and perso
   - 1.1 Interaction analysis
   - 1.2 Pairwise linkage disequilibrium (R²) for the MTOR locus
   - 1.3 Colocalisation analysis
-  - 1.4
 - [2 Survival analysis](#2-survival-analysis)
 - [3 Summary data-based Mendelian randomisation](#3-summary-data-based-mendelian-randomisation)
   - 3.1 Input file preparation
@@ -45,22 +44,24 @@ Sepsis is a heterogeneous clinical syndrome with a high mortality rate and perso
 - [8 Single guide RNA (sgRNA) design](#8-single-guide-rna-sgrna-design)
 
 ## 1 Identification of context specific eQTLs
-1.1 Interaction analysis
+#### 1.1 Interaction analysis
+eQTL interaction was determined using a linear mixed model as implemented in R package lmerTest: p ~ g + i + g:i + (1|donor), where p is the gene expression corrected for population structure and PEER factors, g is the genotype vector, i is an interaction term for SRS endotypes or log2 transformed NLR, and (1|donor) is a random effect accounting for variability between donors.
 ```bash
 # Interaction between MTOR.SNP*SRS or NLR
 Rscript ./1.LMM-model-interaction.R <SRS_data_file> <cell_counts_file>
 # Inverted eQTLs between Neutrophils and T cells
 Rscript ./2.inverted.SRS-interacting.eQTLs.R
 ```
-
-1.2 Pairwise linkage disequilibrium (R²) for the MTOR locus
+#### 1.2 Pairwise linkage disequilibrium (R²) for the MTOR locus
+R² was calculated using PLINK with GAinS genotype data (n=1,168) and visualised with LDheatmap. 
 ```
 bash ./3.r2.ld.map.sh
 ```
-
-1.3 Colocalisation analysis
-
-
+#### 1.3 Colocalisation analysis
+Colocalisation analysis was performed in a ±200-bp window surrounding the MTOR lead eQTL, using R package coloc with default settings. eQTL summary statistics from healthy tissue and cell types were retrieved from eQTL Caltalog. 
+```bash
+Rscript 4.1.coloc.R && Rscript 4.2.plot.resul.R
+```
 
 ## 2 Survival analysis
 To assess the association between genetic variants and 28-day mortality, we use Cox proportional-hazards model and logistic regression adjusting for age, sex, and the first seven genotype principal components.
@@ -92,41 +93,41 @@ bash ./2.smr.run.sh
 ## 4 Pairwise fixation index (Fst)
 
 ## 5 RNA-seq analysis
-5.1 This section describes the RNA-seq analysis pipeline. Raw RNA-seq reads were trimmed using Trim Galore (v0.6.2) and aligned to human genome (hg38) using the HISAT2 (v2.1.0). Transcript quantification was performed using featureCounts (v1.6.2) with GENCODE v31 annotations. The bigwig files normalised by RPKM (Reads Per Kilobase per Million mapped reads) were generated using the bamCoverage function of deepTools (version 3.3.1). Differential gene expression analysis was conducted using DESeq2 on raw read counts. 
+#### 5.1 This section describes the RNA-seq analysis pipeline. 
+Raw RNA-seq reads were trimmed using Trim Galore (v0.6.2) and aligned to human genome (hg38) using the HISAT2 (v2.1.0). Transcript quantification was performed using featureCounts (v1.6.2) with GENCODE v31 annotations. The bigwig files normalised by RPKM (Reads Per Kilobase per Million mapped reads) were generated using the bamCoverage function of deepTools (version 3.3.1). Differential gene expression analysis was conducted using DESeq2 on raw read counts. 
 ```
 sbatch --wrap="bash 0.get.key.name.sh && bash 1.trimming.sh && bash 2.hisat2.mapping.sh && bash 3.featureCounts.sh && 4.RNASeQC.sh && 5.make.bigwigs.sh"
 ```
-
-5.2 PCA & Differential expression analysis - related to Fig.4 & 5
+#### 5.2 PCA & Differential expression analysis 
+related to Fig.4 & 5
 ```
 parallel ::: "Rscript ./DEseq2_T.cells_fig.4.R" "Rscript ./DEseq2_T.cells_fig.5.R" "Rscript ./DEseq2-CD4-RNAsesq-Rapamycin-PRJNA532911.R"
 ```
-
-5.3 Cell type deconvolution
-
+#### 5.3 Cell type deconvolution
 Cell-type deconvolution was performed with [CIBERSORTx](https://cibersortx.stanford.edu/) using a reference panel derived from a [sepsis whole blood scRNA-seq dataset](https://pubmed.ncbi.nlm.nih.gov/37095375/). A signature matrix was built by the Create Signature Matrix analysis module with parameters min. expression = 0.25, replicates = 100 and sampling = 0.5. The CIBERSORTx absolute scores of each cell type in bulk samples were then obtained using the mixture file (Bulk RNAseq count matrix normalised by DESeq2), the signature matrix derived from single cell RNA-seq, the single cell reference matrix for S-mode batch correction and with 100 permutations via the Impute Cell Fractions analysis module.
-
 ```bash
 # association between cell absolute scores and sepsis SRS endotypes
 Rscript ./CIBERSORTx_linear.regression_fig.S1.R
 ```
 
-5.4 UMAP projection of sepsis whole blood scRNA-seq data 
+#### 5.4 UMAP projection of sepsis whole blood scRNA-seq data 
 ```bash
 Rscript ./resul-Seurat.R
 ```
+
 ## 6 ATAC-seq analysis
 This section describes the ATAC-seq analysis pipeline.
 Sequencing reads for ATAC-seq were aligned to the human genome (hg38) using Bowtie2 (v2.2.5). Data were filtered for quality control using Picard (v2.0.1) and Samtools (v1.9) before peak calling with MACS2 (v2.1.0). Differential peak analysis was performed using DESeq2, considering peaks present in at least 30% of samples. Potential batch effects and/or technical variation were assessed through principal component analysis and incorporated as covariates in the DESeq2 design formula. 
 
-6.1 run alignment and peak calling - Detailed scripts are [publicly available](https://pubmed.ncbi.nlm.nih.gov/37388915/).
+#### 6.1 run alignment and peak calling 
+Detailed scripts are [publicly available](https://pubmed.ncbi.nlm.nih.gov/37388915/).
 ```bash
 /ATAC_seq_analysis_slurm_hg38/ATAC_MAIN \
 --fastq ./raw.ATACseq/ \
 --out ./Results_ATAC \
 --min 3 --noidr 8
 ```
-6.2 run differential chromatin accessibility using DESeq2 
+#### 6.2 run differential chromatin accessibility using DESeq2 
 ```bash
 Rscript ./02.ATACseq_DESeq2.R
 ```
